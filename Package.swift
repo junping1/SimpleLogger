@@ -4,21 +4,30 @@
 import PackageDescription
 
 let package = Package(
-    name: "LoggerManager",
+    name: "SimpleLogger",
+    platforms: [
+        .iOS(.v14),
+        .macOS(.v11),
+        .watchOS(.v7),
+        .tvOS(.v14),
+        .visionOS(.v1),
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "LoggerManager",
-            targets: ["LoggerManager"]),
+            name: "SimpleLogger",
+            targets: ["SimpleLogger"]
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "LoggerManager"),
+            name: "SimpleLogger"),
         .testTarget(
-            name: "LoggerManagerTests",
-            dependencies: ["LoggerManager"]
+            name: "SimpleLoggerTests",
+            dependencies: ["SimpleLogger"]
         ),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )
