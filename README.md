@@ -64,6 +64,7 @@ Conform to `LoggerBackend` to create a custom backend:
 ```swift
 public protocol LoggerBackend: Sendable {
     var subsystem: String { get }
+    var category: String { get }
     func log(level: LogLevel, message: String, metadata: [String: String]?)
 }
 ```

@@ -14,7 +14,11 @@ import OSLog
 
 /// An implementation of the `LoggerBackend` protocol that logs messages to OSLog.
 public final class OSLogBackend: LoggerBackend {
+    /// The subsystem name
     public let subsystem: String
+    /// The category name
+    public let category: String
+    /// A logger Instance
     let logger: Logger
 
     /// A boolean value that indicates whether the logger is enabled.
@@ -28,6 +32,7 @@ public final class OSLogBackend: LoggerBackend {
     ///   - environmentKey: The environment key to check for disabling the logger.
     public init(subsystem: String, category: String, environmentKey: String = "DisableLogger") {
         self.subsystem = subsystem
+        self.category = category
         logger = Logger(subsystem: subsystem, category: category)
         if let value = ProcessInfo.processInfo.environment[environmentKey]?.lowercased() {
             loggerEnabled = !(value == "true" || value == "1" || value == "yes")

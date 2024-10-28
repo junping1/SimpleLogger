@@ -1,4 +1,4 @@
-@testable import LoggerManager
+@testable import SimpleLogger
 import Testing
 
 /// add `DisableLogger = true` in environment variables can disable log output

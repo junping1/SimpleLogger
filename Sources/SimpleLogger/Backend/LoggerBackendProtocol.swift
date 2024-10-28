@@ -15,6 +15,8 @@ import Foundation
 public protocol LoggerBackend: Sendable {
     /// The subsystem name.
     var subsystem: String { get }
+    /// The category name
+    var category: String { get }
 
     /// Logs a message with the specified level, message, and metadata.
     ///
