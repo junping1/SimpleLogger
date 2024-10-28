@@ -84,7 +84,7 @@ extension LoggerManagerProtocol where Self == LoggerManager {
     /// - Parameters:
     ///   - subsystem: The subsystem name.
     ///   - category: The category name.
-    static func `default`(subsystem: String, category: String) -> Self {
+    public static func `default`(subsystem: String, category: String) -> Self {
         LoggerManager(backend: OSLogBackend(subsystem: subsystem, category: category))
     }
 
@@ -92,7 +92,7 @@ extension LoggerManagerProtocol where Self == LoggerManager {
     ///
     /// - Parameters:
     ///   - subsystem: The subsystem name.
-    static func console(subsystem: String = "Console Logger") -> Self {
+    public static func console(subsystem: String = "Console Logger") -> Self {
         LoggerManager(backend: ConsoleLogBackend(subsystem: subsystem))
     }
 }
