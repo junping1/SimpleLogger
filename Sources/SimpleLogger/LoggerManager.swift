@@ -11,11 +11,16 @@
 
 import Foundation
 
-/// 日志管理器
+/// A logger manager that logs messages to a backend.
 public final class LoggerManager: LoggerManagerProtocol, @unchecked Sendable {
     let backend: LoggerBackend
     let queue: DispatchQueue
 
+    /// Initializes a `LoggerManager` instance with the specified backend and dispatch queue quality of service.
+    ///
+    /// - Parameters:
+    ///   - backend: The logger backend.
+    ///   - qos: The dispatch queue quality of service.
     public init(
         backend: LoggerBackend,
         qos: DispatchQoS = .utility
@@ -24,6 +29,14 @@ public final class LoggerManager: LoggerManagerProtocol, @unchecked Sendable {
         queue = DispatchQueue(label: backend.subsystem, qos: qos)
     }
 
+    /// Logs a message with the specified level, file, function, and line.
+    ///
+    /// - Parameters:
+    ///   - message: The message to log.
+    ///   - level: The log level.
+    ///   - file: The file name.
+    ///   - function: The function name.
+    ///   - line: The line number.
     public func log(
         _ message: String,
         level: LogLevel = .debug,

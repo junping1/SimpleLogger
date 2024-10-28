@@ -11,7 +11,16 @@
 
 import Foundation
 
+/// A protocol that defines the interface for a logger manager.
 public protocol LoggerManagerProtocol: Sendable {
+    /// Logs a message with the specified level, file, function, and line.
+    ///
+    /// - Parameters:
+    ///   - message: The message to log.
+    ///   - level: The log level.
+    ///   - file: The file name.
+    ///   - function: The function name.
+    ///   - line: The line number.
     func log(
         _ message: String,
         level: LogLevel,
@@ -21,29 +30,68 @@ public protocol LoggerManagerProtocol: Sendable {
     )
 }
 
+/// Default implementations for the `LoggerManagerProtocol`.
 extension LoggerManagerProtocol {
+    /// Logs a debug message.
+    ///
+    /// - Parameters:
+    ///   - message: The message to log.
+    ///   - file: The file name.
+    ///   - function: The function name.
+    ///   - line: The line number.
     public func debug(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
         log(message, level: .debug, file: file, function: function, line: line)
     }
 
+    /// Logs an info message.
+    ///
+    /// - Parameters:
+    ///   - message: The message to log.
+    ///   - file: The file name.
+    ///   - function: The function name.
+    ///   - line: The line number.
     public func info(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
         log(message, level: .info, file: file, function: function, line: line)
     }
 
+    /// Logs a warning message.
+    ///
+    /// - Parameters:
+    ///   - message: The message to log.
+    ///   - file: The file name.
+    ///   - function: The function name.
+    ///   - line: The line number.
     public func warning(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
         log(message, level: .warning, file: file, function: function, line: line)
     }
 
+    /// Logs an error message.
+    ///
+    /// - Parameters:
+    ///   - message: The message to log.
+    ///   - file: The file name.
+    ///   - function: The function name.
+    ///   - line: The line number.
     public func error(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
         log(message, level: .error, file: file, function: function, line: line)
     }
 }
 
+/// Default implementations for the `LoggerManagerProtocol`.
 extension LoggerManagerProtocol where Self == LoggerManager {
+    /// Creates a default `LoggerManager` instance with the specified subsystem and category.
+    ///
+    /// - Parameters:
+    ///   - subsystem: The subsystem name.
+    ///   - category: The category name.
     static func `default`(subsystem: String, category: String) -> Self {
         LoggerManager(backend: OSLogBackend(subsystem: subsystem, category: category))
     }
 
+    /// Creates a `LoggerManager` instance that logs to the console.
+    ///
+    /// - Parameters:
+    ///   - subsystem: The subsystem name.
     static func console(subsystem: String = "Console Logger") -> Self {
         LoggerManager(backend: ConsoleLogBackend(subsystem: subsystem))
     }

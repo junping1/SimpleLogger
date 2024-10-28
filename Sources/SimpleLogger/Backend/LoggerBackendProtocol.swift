@@ -11,8 +11,16 @@
 
 import Foundation
 
-/// 日志后端协议
+/// A protocol that defines the interface for a logger backend.
 public protocol LoggerBackend: Sendable {
+    /// The subsystem name.
     var subsystem: String { get }
+
+    /// Logs a message with the specified level, message, and metadata.
+    ///
+    /// - Parameters:
+    ///   - level: The log level.
+    ///   - message: The message to log.
+    ///   - metadata: The metadata to log.
     func log(level: LogLevel, message: String, metadata: [String: String]?)
 }

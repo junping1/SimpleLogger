@@ -12,14 +12,20 @@
 import Foundation
 import OSLog
 
-/// OSLog 后端实现
+/// An implementation of the `LoggerBackend` protocol that logs messages to OSLog.
 public final class OSLogBackend: LoggerBackend {
     public let subsystem: String
     let logger: Logger
 
-    // 从环境变量中获取是否输出日志的选项
+    /// A boolean value that indicates whether the logger is enabled.
     let loggerEnabled: Bool
 
+    /// Initializes an `OSLogBackend` instance with the specified subsystem and category.
+    ///
+    /// - Parameters:
+    ///   - subsystem: The subsystem name.
+    ///   - category: The category name.
+    ///   - environmentKey: The environment key to check for disabling the logger.
     public init(subsystem: String, category: String, environmentKey: String = "DisableLogger") {
         self.subsystem = subsystem
         logger = Logger(subsystem: subsystem, category: category)
@@ -30,6 +36,12 @@ public final class OSLogBackend: LoggerBackend {
         }
     }
 
+    /// Logs a message with the specified level, message, and metadata.
+    ///
+    /// - Parameters:
+    ///   - level: The log level.
+    ///   - message: The message to log.
+    ///   - metadata: The metadata to log.
     public func log(level: LogLevel, message: String, metadata: [String: String]?) {
         let osLogType: OSLogType = {
             switch level {
