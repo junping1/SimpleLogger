@@ -29,7 +29,7 @@ public enum LogLevel: String, Comparable, Sendable {
     ///   - rhs: The right log level.
     /// - Returns: A boolean value indicating whether the left log level is less than the right log level.
     public static func < (lhs: LogLevel, rhs: LogLevel) -> Bool {
-        let order: [LogLevel] = [.debug, .info, .warning, .error]
+        let order: [LogLevel] = [.debug, .info, .warning, .error, .fault]
         return order.firstIndex(of: lhs)! < order.firstIndex(of: rhs)!
     }
 }
