@@ -1,7 +1,7 @@
 //
 //  ------------------------------------------------
 //  Original project: LoggerManager
-//  Created on 2024/10/28 by Fatbobman(东坡肘子)
+//  Created on 2024/10/28 by Fatbobman( 东坡肘子 )
 //  X: @fatbobman
 //  Mastodon: @fatbobman@mastodon.social
 //  GitHub: @fatbobman
@@ -39,7 +39,9 @@ extension LoggerManagerProtocol {
     ///   - file: The file name.
     ///   - function: The function name.
     ///   - line: The line number.
-    public func debug(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+    public func debug(
+        _ message: String, file: String = #file, function: String = #function, line: Int = #line
+    ) {
         log(message, level: .debug, file: file, function: function, line: line)
     }
 
@@ -50,7 +52,9 @@ extension LoggerManagerProtocol {
     ///   - file: The file name.
     ///   - function: The function name.
     ///   - line: The line number.
-    public func info(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+    public func info(
+        _ message: String, file: String = #file, function: String = #function, line: Int = #line
+    ) {
         log(message, level: .info, file: file, function: function, line: line)
     }
 
@@ -61,7 +65,9 @@ extension LoggerManagerProtocol {
     ///   - file: The file name.
     ///   - function: The function name.
     ///   - line: The line number.
-    public func warning(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+    public func warning(
+        _ message: String, file: String = #file, function: String = #function, line: Int = #line
+    ) {
         log(message, level: .warning, file: file, function: function, line: line)
     }
 
@@ -72,8 +78,23 @@ extension LoggerManagerProtocol {
     ///   - file: The file name.
     ///   - function: The function name.
     ///   - line: The line number.
-    public func error(_ message: String, file: String = #file, function: String = #function, line: Int = #line) {
+    public func error(
+        _ message: String, file: String = #file, function: String = #function, line: Int = #line
+    ) {
         log(message, level: .error, file: file, function: function, line: line)
+    }
+
+    /// Logs a fault message.
+    ///
+    /// - Parameters:
+    ///   - message: The message to log.
+    ///   - file: The file name.
+    ///   - function: The function name.
+    ///   - line: The line number.
+    public func fault(
+        _ message: String, file: String = #file, function: String = #function, line: Int = #line
+    ) {
+        log(message, level: .fault, file: file, function: function, line: line)
     }
 }
 
