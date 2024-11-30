@@ -1,7 +1,7 @@
 //
 //  ------------------------------------------------
 //  Original project: LoggerManager
-//  Created on 2024/10/28 by Fatbobman(东坡肘子)
+//  Created on 2024/10/28 by Fatbobman( 东坡肘子 )
 //  X: @fatbobman
 //  Mastodon: @fatbobman@mastodon.social
 //  GitHub: @fatbobman
@@ -54,13 +54,15 @@ public final class OSLogBackend: LoggerBackend {
             case .info: return .info
             case .warning: return .default
             case .error: return .error
+            case .fault: return .fault
             }
         }()
 
         guard loggerEnabled else { return }
 
         #if DEBUG
-            let fullMessage = "\(message) in \(metadata?["function"] ?? "") at \(metadata?["file"] ?? ""):\(metadata?["line"] ?? "")"
+            let fullMessage =
+                "\(message) in \(metadata?["function"] ?? "") at \(metadata?["file"] ?? ""):\(metadata?["line"] ?? "")"
             logger.log(level: osLogType, "\(fullMessage)")
         #else
             if level > .debug {

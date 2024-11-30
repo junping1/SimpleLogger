@@ -1,7 +1,7 @@
 //
 //  ------------------------------------------------
 //  Original project: LoggerManager
-//  Created on 2024/10/28 by Fatbobman(东坡肘子)
+//  Created on 2024/10/28 by Fatbobman( 东坡肘子 )
 //  X: @fatbobman
 //  Mastodon: @fatbobman@mastodon.social
 //  GitHub: @fatbobman
@@ -19,6 +19,8 @@ public enum LogLevel: String, Comparable, Sendable {
     case warning
     /// The error log level.
     case error
+    /// The fault log level.
+    case fault
 
     /// Compares two log levels.
     ///
