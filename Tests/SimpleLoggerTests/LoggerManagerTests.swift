@@ -5,11 +5,13 @@ import Testing
 @Test func osLoggerTest() async throws {
     let logger: LoggerManagerProtocol = .default(subsystem: "test", category: "default")
     logger.info("Hello, World!")
+    logger.fault("Error message!")
 }
 
 @Test func consoleLoggerTest() async throws {
     let logger: LoggerManagerProtocol = .console()
     logger.info("Hello, World!")
+    logger.fault("Error message!")
 }
 
 @Test func customLoggerTest() async throws {
